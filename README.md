@@ -1,6 +1,6 @@
 # GrocerEase-DBMS-Project
-##Members:
-  Sujal Suri
-  Vimansh Mahajan
-  Riya Gupta
+##Members:<br />
+  Sujal Suri<br />
+  Vimansh Mahajan<br />
+  Riya Gupta<br />
   Anushka Srivastav
