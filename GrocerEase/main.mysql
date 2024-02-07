@@ -71,17 +71,16 @@ CREATE TABLE Inventory (
     itemDescription VARCHAR(100) NOT NULL
 );
 
-drop table if exists Supplier;
-create table Supplier(
-  Supplier_ID INT primary key,
-    Name varchar(50) not null,
-    AddressLine1 varchar(100) not null,
-    AddressLine2 varchar(100) not null,
-    City varchar(100) not null,
-    State varchar(100) not null,
-    Country varchar(100) not null,
-    PIN_code char(6) not null
-#     Item varchar(100) not null
+DROP TABLE IF EXISTS Supplier;
+CREATE TABLE Supplier (
+    Supplier_ID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    AddressLine1 VARCHAR(100) NOT NULL,
+    AddressLine2 VARCHAR(100) NOT NULL,
+    City VARCHAR(100) NOT NULL,
+    State VARCHAR(100) NOT NULL,
+    Country VARCHAR(100) NOT NULL,
+    PIN_code CHAR(6) NOT NULL
 );
 
 drop table if exists Cart;
@@ -93,4 +92,19 @@ create table Cart(
     Quantity INT
 );
 
+DROP TABLE IF EXISTS `Orders`;
 
+CREATE TABLE Orders(
+    OrderID INT PRIMARY KEY NOT NULL,
+    CustomerID INT NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    OrderStatus VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Reviews (
+    OrderID INT,
+    stars INT,
+    description VARCHAR(255),
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
