@@ -75,3 +75,10 @@ create table Supplier(
     PIN_code char(6) not null
 #     Item varchar(100) not null
 );
+
+create table Cart(
+    Cart_ID INT primary key,
+    Customer_ID INT not null,
+    Item_ID INT,
+    Quantity INT
+);
