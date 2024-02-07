@@ -171,5 +171,14 @@ INSERT INTO Supplier (Name, AddressLine1, AddressLine2, City, State, Country, PI
 ( 'Healthy Living Products Depot', 'Warehouse 6, Wellness Street', 'Zone 10', 'Jaipur', 'Rajasthan', 'India', '302022'),
 ( 'Fruitful Delights Wholesale Hub', 'Market Plaza, Fruit Avenue', 'District 8', 'Chandigarh', 'Punjab', 'India', '160022');
 
-
-
+INSERT INTO DeliveryAgent (AgentName, PhoneNumber, StoreID) VALUES
+('Aarav Sharma', 9876543210, 5),
+('Advait Gupta', 8765432109, 3),
+('Vivaan Patel', 7654321098, 2),
+('Arjun Singh', 7543210987, 4),
+('Vihaan Kumar', 8432109876, 1),
+('Reyansh Reddy', 7321098765, 6),
+('Aryan Malhotra', 9210987654, 9),
+('Rudra Khanna', 8109876543, 8),
+('Ayaan Kapoor', 8098765432, 7),
+('Kabir Mehta', 9876543210, 10);
