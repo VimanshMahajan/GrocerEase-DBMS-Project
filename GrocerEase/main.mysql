@@ -138,6 +138,7 @@ INSERT INTO Admin (AdminID, admin_pwd, StoreID) VALUES
 (108, '1234admin', 4),
 (109, 'admin_123', 10),
 (110, 'securepass', 9);
+
 INSERT INTO Customers (FirstName, MiddleName, LastName, LoginID, Customer_Password, AddressLine1, AddressLine2, City, State, Country, pin_code, Age, PhoneNumber) VALUES
 ('John', 'Doe', 'Smith', 'john_smith', 'password123', '123 Main Street', 'Apt 5', 'Mumbai', 'Maharashtra', 'India', '400001', 25, 9876543210),
 ('Alice', 'Eve', 'Johnson', 'alice_johnson', 'securepass', '456 Park Avenue', 'Flat 12', 'Delhi', 'Delhi', 'India', '110001', 30, 8765432109),
@@ -215,7 +216,7 @@ VALUES
     (2, 'Colgate Whitening Toothpaste', '150gm per tube', 90, 120, 'Health and Hygiene', 'Trusted toothpaste for oral care'),
     (6, 'Stayfree Sanitary Napkins', 'Pack of 20 pads', 150, 120, 'Health and Hygiene', 'Cotton sanitary napkins for good hygiene'),
     (7, 'Plastic Gala Broom', '1 piece', 150, 120, 'Health and Hygiene', 'gala broom with plastic bricels for deep cleaning');
-    
+
 INSERT INTO Wallet (CustomerID, Balance, UPI_ID) VALUES
 (1, 10000.00, '9876543210@paytm'),
 (2, 15000.00, '8765432109@paytm'),
@@ -256,3 +257,25 @@ INSERT INTO Reviews (OrderID, stars, description) VALUES
 (3, 3, 'Average experience, delivery was delayed.'),
 (5, 5, 'Very satisfied with the product and delivery.'),
 (7, 4, 'Good service overall, would recommend.');
+
+INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
+(1, 1, NULL, NULL),
+(2, 2, NULL, NULL),
+(3, 3, NULL, NULL),
+(4, 4, NULL, NULL),
+(5, 5, NULL, NULL),
+(6, 6, NULL, NULL),
+(7, 7, NULL, NULL),
+(8, 8, NULL, NULL),
+(9, 9, NULL, NULL),
+(10, 10, NULL, NULL),
+(11, 11, NULL, NULL),
+(12, 12, NULL, NULL),
+(13, 13, NULL, NULL),
+(14, 14, NULL, NULL),
+(15, 15, NULL, NULL),
+(16, 16, NULL, NULL),
+(17, 17, NULL, NULL),
+(18, 18, NULL, NULL),
+(19, 19, NULL, NULL),
+(20, 20, NULL, NULL);
