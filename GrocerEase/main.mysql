@@ -19,7 +19,9 @@ CREATE TABLE Customers(
     pin_code VARCHAR(6) NOT NULL,
     CONSTRAINT pin_code_length CHECK (LENGTH(pin_code) = 6 AND pin_code REGEXP '^[0-9]+$'),
     Age INT NOT NULL CHECK (Age > 0),
-    PhoneNumber BIGINT NOT NULL CHECK (PhoneNumber >= 0 AND PhoneNumber < 10000000000));
+    PhoneNumber BIGINT NOT NULL CHECK (PhoneNumber >=1000000000 AND PhoneNumber < 10000000000)
+)AUTO_INCREMENT=1;
+
 
 DROP TABLE IF EXISTS `Offline_Stores`;
 
@@ -38,9 +40,10 @@ DROP TABLE IF EXISTS `DeliveryAgent`;
 CREATE TABLE DeliveryAgent(
 	AgentID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     AgentName VARCHAR(100) NOT NULL,
-    PhoneNumber BIGINT NOT NULL CHECK (PhoneNumber >= 0 AND PhoneNumber < 10000000000),
+    PhoneNumber BIGINT NOT NULL CHECK (PhoneNumber >= 1000000000 AND PhoneNumber < 10000000000),
     StoreID INT NOT NULL,
-    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID));
+    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID)
+)AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Admin`;
 
@@ -67,7 +70,7 @@ CREATE TABLE Inventory (
 
 DROP TABLE IF EXISTS Supplier;
 CREATE TABLE Supplier (
-    Supplier_ID INT PRIMARY KEY,
+    Supplier_ID  INT auto_increment PRIMARY KEY,
     Name VARCHAR(50) NOT NULL,
     AddressLine1 VARCHAR(100) NOT NULL,
     AddressLine2 VARCHAR(100) NOT NULL,
@@ -75,7 +78,7 @@ CREATE TABLE Supplier (
     State VARCHAR(100) NOT NULL,
     Country VARCHAR(100) NOT NULL,
     PIN_code CHAR(6) NOT NULL
-);
+)AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Orders`;
 
@@ -117,3 +120,39 @@ INSERT INTO Admin (AdminID, admin_pwd, StoreID) VALUES
 (108, '1234admin', 4),
 (109, 'admin_123', 10),
 (110, 'securepass', 9);
+INSERT INTO Customers (FirstName, MiddleName, LastName, LoginID, Customer_Password, AddressLine1, AddressLine2, City, State, Country, pin_code, Age, PhoneNumber) VALUES
+('John', 'Doe', 'Smith', 'john_smith', 'password123', '123 Main Street', 'Apt 5', 'Mumbai', 'Maharashtra', 'India', '400001', 25, 9876543210),
+('Alice', 'Eve', 'Johnson', 'alice_johnson', 'securepass', '456 Park Avenue', 'Flat 12', 'Delhi', 'Delhi', 'India', '110001', 30, 8765432109),
+('David', 'Michael', 'Brown', 'david_brown', 'brown123', '789 Crescent Road', 'Block B', 'Mumbai', 'Maharashtra', 'India', '400002', 28, 7654321098),
+('Priya', 'Raj', 'Singh', 'priya_singh', 'singh456', '101 Green Valley', 'Floor 3', 'Delhi', 'Delhi', 'India', '110002', 22, 6543210987),
+('Rahul', 'Kumar', 'Verma', 'rahul_verma', 'verma789', '234 Lake View', 'Tower 7', 'Mumbai', 'Maharashtra', 'India', '400003', 35, 5432109876),
+('Neha', 'Sharma', 'Gupta', 'neha_gupta', 'gupta@123', '567 Hill Street', 'Unit 8', 'Delhi', 'Delhi', 'India', '110003', 29, 4321098765),
+('Amit', 'Singh', 'Yadav', 'amit_yadav', 'yadavpass', '789 Skyline Avenue', 'Apartment 15', 'Mumbai', 'Maharashtra', 'India', '400004', 27, 3210987654),
+('Anita', 'Mishra', 'Joshi', 'anita_joshi', 'anita123', '876 River Side', 'Flat 2B', 'Delhi', 'Delhi', 'India', '110004', 32, 2109876543),
+('Vikram', 'Gupta', 'Sinha', 'vikram_sinha', 'sinha456', '345 Maple Lane', 'Suite 10', 'Mumbai', 'Maharashtra', 'India', '400005', 26, 1098765432),
+('Sanya', 'Reddy', 'Kumar', 'sanya_kumar', 'reddypass', '678 Forest View', 'Villa 3', 'Delhi', 'Delhi', 'India', '110005', 31, 9876543210),
+('Aditya', 'Kumar', 'Shah', 'aditya_shah', 'shah@123', '456 Sea View', 'Apartment 7', 'Mumbai', 'Maharashtra', 'India', '400006', 33, 8765432109),
+('Ritu', 'Verma', 'Goyal', 'ritu_goyal', 'goyal456', '789 Sunrise Avenue', 'Flat 3C', 'Delhi', 'Delhi', 'India', '110006', 28, 7654321098),
+('Kunal', 'Mehta', 'Singh', 'kunal_singh', 'singh789', '101 Sky Scraper', 'Floor 15', 'Mumbai', 'Maharashtra', 'India', '400007', 25, 6543210987),
+('Neha', 'Chopra', 'Agarwal', 'neha_agarwal', 'agarwal@123', '234 Hill Top', 'Tower 4', 'Delhi', 'Delhi', 'India', '110007', 29, 5432109876),
+('Rahul', 'Saxena', 'Yadav', 'rahul_yadav', 'yadavpass', '567 Ocean View', 'Suite 20', 'Mumbai', 'Maharashtra', 'India', '400008', 26, 4321098765),
+('Amit', 'Joshi', 'Gupta', 'amit_gupta', 'gupta456', '789 Palm Lane', 'Unit 11', 'Delhi', 'Delhi', 'India', '110008', 32, 3210987654),
+('Vidya', 'Nair', 'Sinha', 'vidya_sinha', 'sinha@123', '876 Green Hills', 'Flat 4B', 'Mumbai', 'Maharashtra', 'India', '400009', 27, 2109876543),
+('Sandeep', 'Rai', 'Sharma', 'sandeep_sharma', 'sharma789', '345 River Side', 'Villa 5', 'Delhi', 'Delhi', 'India', '110009', 34, 1098765432),
+('Anjali', 'Gupta', 'Verma', 'anjali_verma', 'verma456', '678 Silver Street', 'Apartment 9', 'Mumbai', 'Maharashtra', 'India', '400010', 30, 9876543210),
+('Vivek', 'Yadav', 'Kumar', 'vivek_kumar', 'kumar@123', '901 Gold Plaza', 'Floor 8', 'Delhi', 'Delhi', 'India', '110010', 31, 8765432109);
+
+INSERT INTO Supplier (Name, AddressLine1, AddressLine2, City, State, Country, PIN_code) VALUES
+( 'Green Fields Organic', 'Warehouse 1, Industrial Area', 'Sector 5', 'Mumbai', 'Maharashtra', 'India', '400021'),
+( 'Health Essentials Distributors', 'Market Plaza, Main Road', 'District 3C', 'Delhi', 'Delhi', 'India', '110022'),
+( 'Fresh Harvest Distribution Center', 'Warehouse 2, Outer Ring Road', 'Zone 12', 'Bangalore', 'Karnataka', 'India', '560022'),
+( 'Eco-Friendly Stationary Hub', 'Market Street, Central Area', 'Block B', 'Chennai', 'Tamil Nadu', 'India', '600022'),
+( 'Nature Beauty Products Depot', 'Warehouse 3, Beauty Avenue', 'District 10', 'Kolkata', 'West Bengal', 'India', '700022'),
+( 'Hygiene Haven Logistics Center', 'Warehouse 4, Cleanliness Road', 'Sector C', 'Hyderabad', 'Telangana', 'India', '500022'),
+( 'Organic Shampoo Distribution', 'Market Square, Health Lane', 'Zone 17', 'Pune', 'Maharashtra', 'India', '411022'),
+( 'Fresh Veggie Wholesale Center', 'Warehouse 5, Vegetable Lane', 'Area 6', 'Ahmedabad', 'Gujarat', 'India', '380022'),
+( 'Healthy Living Products Depot', 'Warehouse 6, Wellness Street', 'Zone 10', 'Jaipur', 'Rajasthan', 'India', '302022'),
+( 'Fruitful Delights Wholesale Hub', 'Market Plaza, Fruit Avenue', 'District 8', 'Chandigarh', 'Punjab', 'India', '160022');
+
+
+
