@@ -3,6 +3,24 @@ DROP DATABASE IF EXISTS `GrocerEase`;
 CREATE DATABASE GrocerEase;
 USE GrocerEase;
 
+DROP TABLE IF EXISTS `Customers`;
+CREATE TABLE Customers(
+	CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    MiddleName VARCHAR(50),
+    LastName VARCHAR(50),
+    LoginID VARCHAR(50) NOT NULL,
+    Customer_Password VARCHAR(50) NOT NULL,
+    AddressLine1 VARCHAR(100) NOT NULL,
+    AddressLine2 VARCHAR(100) NOT NULL,
+    City VARCHAR(50) NOT NULL,
+    State VARCHAR(50) NOT NULL,
+    Country VARCHAR(50) NOT NULL,
+    pin_code VARCHAR(6) NOT NULL,
+    CONSTRAINT pin_code_length CHECK (LENGTH(pin_code) = 6 AND pin_code REGEXP '^[0-9]+$'),
+    Age INT NOT NULL CHECK (Age > 0),
+    PhoneNumber BIGINT NOT NULL CHECK (PhoneNumber >= 0 AND PhoneNumber < 10000000000));
+
 DROP TABLE IF EXISTS `Offline_Stores`;
 
 CREATE TABLE Offline_Stores (
@@ -15,6 +33,14 @@ CREATE TABLE Offline_Stores (
     zip_code VARCHAR(6) NOT NULL,
     CONSTRAINT zip_code_length CHECK (LENGTH(zip_code) = 6 AND zip_code REGEXP '^[0-9]+$')
 );
+
+DROP TABLE IF EXISTS `DeliveryAgent`;
+CREATE TABLE DeliveryAgent(
+	AgentID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    AgentName VARCHAR(100) NOT NULL,
+    PhoneNumber BIGINT NOT NULL CHECK (PhoneNumber >= 0 AND PhoneNumber < 10000000000),
+    StoreID INT NOT NULL,
+    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID));
 
 DROP TABLE IF EXISTS `Admin`;
 
