@@ -57,9 +57,10 @@ CREATE TABLE Admin (
 DROP TABLE IF EXISTS `Inventory`;
 
 CREATE TABLE Inventory (
-    itemID INT NOT NULL,
+    itemID INT AUTO_INCREMENT NOT NULL,
     storeID INT NOT NULL,
-    ItemName VARCHAR(20) NOT NULL,
+    ItemName VARCHAR(50) NOT NULL,
+    Unit VARCHAR(50) NOT NULL,
     PRIMARY KEY (itemID, StoreID),
     FOREIGN KEY (storeID) REFERENCES Offline_Stores(storeID),
     price INT NOT NULL,
@@ -182,3 +183,36 @@ INSERT INTO DeliveryAgent (AgentName, PhoneNumber, StoreID) VALUES
 ('Rudra Khanna', 8109876543, 8),
 ('Ayaan Kapoor', 8098765432, 7),
 ('Kabir Mehta', 9876543210, 10);
+
+INSERT INTO Inventory (storeID, ItemName, Unit, price, stock, category, itemDescription)
+VALUES
+    -- Fruits
+    (1, 'Kashmir Apples', 'per 500 gms', 93, 100, 'Fruits', 'Fresh and juicy apples from Kashmir'),
+    (10, 'Bananas', 'per 3 pieces', 45, 150, 'Fruits', 'Ripe bananas for a healthy snack'),
+    (3, 'Valencia Oranges', 'per kg', 200, 80, 'Fruits', 'Sweet and tangy oranges'),
+    (4, 'Pear', '3 pieces', 300, 80, 'Fruits', 'Green and yummy pears'),
+    (3, 'Kiwis', 'per peice', 40, 80, 'Fruits', 'Yummy kiwis for a healthy you'),
+
+    -- Vegetables
+    (5, 'Carrot-Red', 'per 500 gms', 13, 120, 'Vegetables', 'Crunchy and nutritious carrots'),
+    (7, 'Broccoli', 'per piece', 40, 90, 'Vegetables', 'Fresh and green broccoli heads'),
+    (8, 'Tomatos', 'per piece', 40, 90, 'Vegetables', 'Fresh red tomatoes from the farm'),
+
+    -- Hair care products
+    (4, 'Loreal Paris Shampoo', 'per bottle: 500ml', 300, 50, 'Hair Care', 'Gentle and nourishing shampoo'),
+    (1, 'Mama Earth Anti Hair fall Conditioner', 'per bottle: 500ml', 500, 60, 'Hair Care', 'Deep conditioning for smooth hair'),
+    (1, 'Mama Earth Anti Hair fall Shampoo', 'per bottle: 500ml', 250, 60, 'Hair Care', 'Shampoo for smooth hair'),
+    (3, 'Johnsons Hair oil', 'per bottle: 150ml', 89, 60, 'Hair Care', 'hair oil for smooth hair'),
+
+    -- Stationary items
+    (10, 'Classmate Notebook', '172 pges', 60, 100, 'Stationery', 'Spiral-bound smooth notebook for writing'),
+    (8, 'Rorito Ballpoint Pens', 'Pack of 5', 30, 150, 'Stationery', 'Pack of ballpoint pens for everyday use'),
+    (7, 'Apsara Scale', '1 scale', 10, 150, 'Stationery', '15 cm scale for everyday use'),
+    (5, 'Nataraja Pencils', 'Pack of 10 pencils', 50, 150, 'Stationery', 'HB pencils for a good handwriting'),
+
+    -- Health and hygiene products
+    (9, 'Dettol Hand Sanitizer', '50ml', 25, 80, 'Health and Hygiene', 'Alcohol-based hand sanitizer for germ free hands'),
+    (2, 'Colgate Whitening Toothpaste', '150gm per tube', 90, 120, 'Health and Hygiene', 'Trusted toothpaste for oral care'),
+    (6, 'Stayfree Sanitary Napkins', 'Pack of 20 pads', 150, 120, 'Health and Hygiene', 'Cotton sanitary napkins for good hygiene'),
+    (7, 'Plastic Gala Broom', '1 piece', 150, 120, 'Health and Hygiene', 'gala broom with plastic bricels for deep cleaning');
+    
