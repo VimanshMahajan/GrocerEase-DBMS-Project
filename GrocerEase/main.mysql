@@ -84,9 +84,13 @@ create table Supplier(
 #     Item varchar(100) not null
 );
 
+drop table if exists Cart;
 create table Cart(
     Cart_ID INT primary key,
-    Customer_ID INT not null,
+    Customer_ID Int not null,
+    FOREIGN KEY (Customer_ID) references Customers(CustomerID),
     Item_ID INT,
     Quantity INT
 );
+
+
