@@ -84,11 +84,11 @@ CREATE TABLE Supplier (
 DROP TABLE IF EXISTS `Orders`;
 
 CREATE TABLE Orders(
-    OrderID INT PRIMARY KEY NOT NULL,
+    OrderID INT auto_increment PRIMARY KEY NOT NULL,
     CustomerID INT NOT NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     OrderStatus VARCHAR(20) NOT NULL
-);
+)AUTO_INCREMENT=1;
 
 CREATE TABLE Reviews (
     OrderID INT,
@@ -216,3 +216,43 @@ VALUES
     (6, 'Stayfree Sanitary Napkins', 'Pack of 20 pads', 150, 120, 'Health and Hygiene', 'Cotton sanitary napkins for good hygiene'),
     (7, 'Plastic Gala Broom', '1 piece', 150, 120, 'Health and Hygiene', 'gala broom with plastic bricels for deep cleaning');
     
+INSERT INTO Wallet (CustomerID, Balance, UPI_ID) VALUES
+(1, 10000.00, '9876543210@paytm'),
+(2, 15000.00, '8765432109@paytm'),
+(3, 0.00, '7654321098@paytm'),
+(4, 8000.00, '6543210987@paytm'),
+(5, 20000.00, '5432109876@paytm'),
+(6, 0.00, '4321098765@paytm'),
+(7, 11000.00, '3210987654@paytm'),
+(8, 7500.00, '2109876543@paytm'),
+(9, 0.00, '1098765432@paytm'),
+(10, 13000.00, '9876543210@paytm'),
+(11, 14000.00, '8765432109@paytm'),
+(12, 0.00, '7654321098@paytm'),
+(13, 18000.00, '6543210987@paytm'),
+(14, 8500.00, '5432109876@paytm'),
+(15, 0.00, '4321098765@paytm'),
+(16, 0.00, '3210987654@paytm'),
+(17, 10500.00, '2109876543@paytm'),
+(18, 0.00, '1098765432@paytm'),
+(19, 13500.00, '9876543210@paytm'),
+(20, 0.00, '8765432109@paytm');
+
+INSERT INTO Orders (CustomerID, OrderStatus) VALUES
+(1, 'Shipped'),
+(2, 'Delivered'),
+(3, 'Processing'),
+(4, 'Cancelled'),
+(15, 'Shipped'),
+(7, 'Delivered'),
+(8, 'Shipped'),
+(10, 'Processing'),
+(11, 'Shipped'),
+(13, 'Delivered');
+
+INSERT INTO Reviews (OrderID, stars, description) VALUES
+(1, 5, 'Excellent service and product quality.'),
+(2, 4, 'Fast delivery but product packaging could be better.'),
+(3, 3, 'Average experience, delivery was delayed.'),
+(5, 5, 'Very satisfied with the product and delivery.'),
+(7, 4, 'Good service overall, would recommend.');
