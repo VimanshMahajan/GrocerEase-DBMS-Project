@@ -42,19 +42,13 @@ CREATE TABLE DeliveryAgent(
     StoreID INT NOT NULL,
     FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID));
 
-DROP TABLE IF EXISTS `Wallet`;
-CREATE TABLE Wallet(
-	CustomerID INT NOT NULL,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
-    Balance FLOAT CHECK (Balance >= 0),
-    UPI_ID VARCHAR(20) NOT NULL
-);
-
 DROP TABLE IF EXISTS `Admin`;
 
 CREATE TABLE Admin (
     AdminID INT PRIMARY KEY NOT NULL,
-    admin_pwd VARCHAR(10) NOT NULL
+    admin_pwd VARCHAR(10) NOT NULL,
+    StoreID INT NOT NULL,
+    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID)
 );
 
 DROP TABLE IF EXISTS `Inventory`;
@@ -83,15 +77,6 @@ CREATE TABLE Supplier (
     PIN_code CHAR(6) NOT NULL
 );
 
-drop table if exists Cart;
-create table Cart(
-    Cart_ID INT primary key,
-    Customer_ID Int not null,
-    FOREIGN KEY (Customer_ID) references Customers(CustomerID),
-    Item_ID INT,
-    Quantity INT
-);
-
 DROP TABLE IF EXISTS `Orders`;
 
 CREATE TABLE Orders(
@@ -108,3 +93,27 @@ CREATE TABLE Reviews (
     PRIMARY KEY (OrderID),
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 );
+
+INSERT INTO Offline_Stores (storeID, AddressLine1, AddressLine2, city, state, country, zip_code) VALUES
+(1, '1, Anand Bai Keni Compd', 'Datta Mandir X Rd, Kandivli', 'Mumbai', 'Maharashtra', 'India', '400067'),
+(2, '7, Laxmi Tower Lsc', 'Sector 10, Patel Nagar', 'New Delhi', 'Delhi', 'India', '110034'),
+(3, '399,Street-24', 'Hebbal', 'Bangalore', 'Karnataka', 'India', '560024'),
+(4, '111, Industrial Area', 'Sion East', 'Mumbai', 'Maharashtra', 'India', '400022'),
+(5, 'Kaderi Chawl, Andheri Kurla Road', 'Andheri (west)', 'Mumbai', 'Maharashtra', 'India', '400072'),
+(6, '8, Mayur Kunj, Liberty Garden', 'Rd No 4, Malad', 'Mumbai', 'Maharashtra', 'India', '400064'),
+(7, '225, Bombay Talkies Compound', 'Dadiseth Road, Nr Lokseva Transport, Malad', 'Mumbai', 'Maharashtra', 'India', '400064'),
+(8, 'Lohana Sanitorium, Sanitorium Lane', 'Ghatkopar (west)', 'Mumbai', 'Maharashtra', 'India', '400086'),
+(9, '2085, Sector 16', 'Faridabad', 'Delhi NCR', 'Haryana', 'India', '121001'),
+(10, 'Gala No 213, Creative Indu Estate', 'N.m. Joshi Marg, Lower Parel', 'Mumbai', 'Maharashtra', 'India', '400013');
+
+INSERT INTO Admin (AdminID, admin_pwd, StoreID) VALUES
+(101, 'pass123', 3),
+(102, 'adminpass', 7),
+(103, 'securepwd', 2),
+(104, 'admin1234', 5),
+(105, 'pwd123', 1),
+(106, 'admin@123', 8),
+(107, 'pass@123', 6),
+(108, '1234admin', 4),
+(109, 'admin_123', 10),
+(110, 'securepass', 9);
