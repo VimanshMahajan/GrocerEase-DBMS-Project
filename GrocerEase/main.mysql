@@ -42,6 +42,14 @@ CREATE TABLE DeliveryAgent(
     StoreID INT NOT NULL,
     FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID));
 
+DROP TABLE IF EXISTS `Wallet`;
+CREATE TABLE Wallet(
+	CustomerID INT NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    Balance FLOAT CHECK (Balance >= 0),
+    UPI_ID VARCHAR(20) NOT NULL
+);
+
 DROP TABLE IF EXISTS `Admin`;
 
 CREATE TABLE Admin (
