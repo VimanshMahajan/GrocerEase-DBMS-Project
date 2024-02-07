@@ -97,6 +97,23 @@ CREATE TABLE Reviews (
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 );
 
+DROP TABLE IF EXISTS `Wallet`;
+CREATE TABLE Wallet(
+	CustomerID INT NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    Balance FLOAT CHECK (Balance >= 0),
+    UPI_ID VARCHAR(20) NOT NULL
+);
+
+drop table if exists Cart;
+create table Cart(
+    Cart_ID INT primary key,
+    Customer_ID Int not null,
+    FOREIGN KEY (Customer_ID) references Customers(CustomerID),
+    Item_ID INT,
+    Quantity INT
+);
+
 INSERT INTO Offline_Stores (storeID, AddressLine1, AddressLine2, city, state, country, zip_code) VALUES
 (1, '1, Anand Bai Keni Compd', 'Datta Mandir X Rd, Kandivli', 'Mumbai', 'Maharashtra', 'India', '400067'),
 (2, '7, Laxmi Tower Lsc', 'Sector 10, Patel Nagar', 'New Delhi', 'Delhi', 'India', '110034'),
