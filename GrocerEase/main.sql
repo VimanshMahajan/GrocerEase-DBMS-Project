@@ -90,7 +90,7 @@ CREATE TABLE Orders(
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     OrderStatus VARCHAR(20) NOT NULL,
     ETA TIME NOT NULL,
-    TimeStamp TIME
+    OrderTime TIMESTAMP
 )AUTO_INCREMENT=1;
 
 CREATE TABLE Reviews (
@@ -295,7 +295,7 @@ INSERT INTO Wallet (CustomerID, Balance, UPI_ID) VALUES
 (19, 13500.00, '9876543210@paytm'),
 (20, 0.00, '8765432109@paytm');
 
-INSERT INTO Orders (CustomerID, AgentID, OrderStatus, ETA, TimeStamp) VALUES
+INSERT INTO Orders (CustomerID, AgentID, OrderStatus, ETA, OrderTime) VALUES
 (1, 2, 'Out for Delivery', 10,'2024-02-10 :16:50'),
 (2, 1, 'Delivered', 0,'2024-02-08 :18:10'),
 (3, 5, 'Processing',10,'2024-02-10 :16:15'),
