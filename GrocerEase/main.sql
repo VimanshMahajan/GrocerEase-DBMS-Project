@@ -89,7 +89,10 @@ CREATE TABLE Orders(
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     OrderStatus VARCHAR(20) NOT NULL,
     ETA TIME NOT NULL,
-    OrderTime TIMESTAMP
+    OrderTime TIMESTAMP,
+    itemID INT,
+    quantity INT,
+    FOREIGN KEY (itemID) REFERENCES Inventory(itemID)
 )AUTO_INCREMENT=1;
 
 CREATE TABLE Reviews (
@@ -273,24 +276,24 @@ INSERT INTO Wallet (CustomerID, Balance, UPI_ID) VALUES
 (19, 135.00, '9876543210@paytm'),
 (20, 0.00, '8765432109@paytm');
 
-INSERT INTO Orders (CustomerID, AgentID, OrderStatus, ETA, OrderTime) VALUES
-(6, 2, 'Out for Delivery', 10,'2024-02-10 :16:50'),
-(9, 1, 'Delivered', 0,'2024-02-08 :18:10'),
-(3, 5, 'Processing',10,'2024-02-10 :16:15'),
-(4, 3, 'Cancelled',0,'2024-01-31 :22:30'),
-(17, 4, 'Out for Delivery',6,'2024-02-10 :16:45'),
-(14, 8, 'Delivered',0,'2024-02-05 :11:50'),
-(19, 7, 'Out for Delivery',8,'2024-02-10 :16:40'),
-(10, 6, 'Processing',11,'2024-02-10 :16:30'),
-(11, 9, 'Out for Delivery',6,'2024-02-10 :16:50'),
-(13, 10, 'Delivered',0,'2024-02-05 :16:10');
+INSERT INTO Orders (CustomerID ,AgentID,itemID,quantity ,OrderStatus, ETA, OrderTime) VALUES
+(6, 2,1,5, 'Out for Delivery', 10,'2024-02-10 16:50'),
+(9, 1, 1,3,'Delivered', 0,'2024-02-08 18:10'),
+(3, 5,1,5, 'Processing',10,'2024-02-10 16:15'),
+(4, 3,1,2, 'Cancelled',0,'2024-01-31 22:30'),
+(17, 4,5,2, 'Out for Delivery',6,'2024-02-10 16:45'),
+(14, 8,6,1, 'Delivered',0,'2024-02-05 11:50'),
+(19, 7,7,2, 'Out for Delivery',8,'2024-02-10 16:40'),
+(10, 6,1,3, 'Processing',11,'2024-02-10 16:30'),
+(11, 9,2,1, 'Out for Delivery',6,'2024-02-10 16:50'),
+(13, 10,3,1, 'Delivered',0,'2024-02-05 16:10');
 
 INSERT INTO Reviews (OrderID, stars, description) VALUES
-(6, 5, 'Excellent service and product quality.'),
-(9, 4, 'Fast delivery but product packaging could be better.'),
+(1, 5, 'Excellent service and product quality.'),
+(2, 4, 'Fast delivery but product packaging could be better.'),
 (3, 3, 'Average experience, delivery was delayed.'),
-(13, 5, 'Very satisfied with the product and delivery.'),
-(14, 4, 'Good service overall, would recommend.');
+(4, 5, 'Very satisfied with the product and delivery.'),
+(5, 4, 'Good service overall, would recommend.');
 
 INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
 (1, 1, NULL, NULL),
@@ -320,26 +323,26 @@ FROM DeliveryAgent da
 JOIN Offline_Stores os ON da.StoreID = os.StoreID;
 
 INSERT INTO Transaction (CustomerID,Amount,Transactiontime ) VALUES
-(1, 100.00,'2023-02-03 :14:02' ),
-(2, 150.00,'2023-02-03 :18:00' ),
-(3, -200.00,'2023-02-03 :18:00' ),
-(4, -180.00,'2023-02-03 :18:00' ),
-(5, -200.00,'2023-02-03 :18:00' ),
-(6, -500.00,'2023-02-03 :18:00' ),
-(7, 50.00,'2023-02-03 :18:00' ),
-(8, -200.00,'2023-02-03 :18:00' ),
-(9, -700.00,'2023-02-03 :18:00' ),
-(10, -130.00,'2023-02-03 :18:00' ),
-(11, 140.00,'2023-02-03 :18:00' ),
-(12, -200.00,'2023-02-03 :18:00' ),
-(13, 180.00,'2023-02-03 :18:00' ),
-(14, -200.00,'2023-02-03 :18:00' ),
-(15, -1000.00,'2023-02-03 :18:00' ),
-(16, -500.00,'2023-02-03 :18:00' ),
-(17, -120.00,'2023-02-03 :18:00' ),
-(18, -500.00,'2023-02-03 :18:00' ),
-(19, 135.00,'2023-02-03 :18:00' ),
-(20, -400.00,'2023-02-03 :18:00' );
+(1, 100.00,'2023-02-03 14:02' ),
+(2, 150.00,'2023-02-03 18:00' ),
+(3, -200.00,'2023-02-03 18:00' ),
+(4, -180.00,'2023-02-03 18:00' ),
+(5, -200.00,'2023-02-03 18:00' ),
+(6, -500.00,'2023-02-03 18:00' ),
+(7, 50.00,'2023-02-03 18:00' ),
+(8, -200.00,'2023-02-03 18:00' ),
+(9, -700.00,'2023-02-03 18:00' ),
+(10, -130.00,'2023-02-03 18:00' ),
+(11, 140.00,'2023-02-03 18:00' ),
+(12, -200.00,'2023-02-03 18:00' ),
+(13, 180.00,'2023-02-03 18:00' ),
+(14, -200.00,'2023-02-03 18:00' ),
+(15, -1000.00,'2023-02-03 18:00' ),
+(16, -500.00,'2023-02-03 18:00' ),
+(17, -120.00,'2023-02-03 18:00' ),
+(18, -500.00,'2023-02-03 18:00' ),
+(19, 135.00,'2023-02-03 18:00' ),
+(20, -400.00,'2023-02-03 18:00' );
 
 INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES 
 (1, 10, 3, 20),
