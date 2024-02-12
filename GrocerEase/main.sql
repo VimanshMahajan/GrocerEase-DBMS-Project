@@ -294,17 +294,17 @@ INSERT INTO Wallet (CustomerID, Balance, UPI_ID) VALUES
 (19, 13500.00, '9876543210@paytm'),
 (20, 0.00, '8765432109@paytm');
 
-INSERT INTO Orders (CustomerID, OrderStatus) VALUES
-(1, 'Shipped'),
-(2, 'Delivered'),
-(3, 'Processing'),
-(4, 'Cancelled'),
-(15, 'Shipped'),
-(7, 'Delivered'),
-(8, 'Shipped'),
-(10, 'Processing'),
-(11, 'Shipped'),
-(13, 'Delivered');
+INSERT INTO Orders (CustomerID, AgentID, OrderStatus, ETA, TimeStamp) VALUES
+(1, 2, 'Out for Delivery', 10,'2024-02-10 :16:50'),
+(2, 1, 'Delivered', 0,'2024-02-08 :18:10'),
+(3, 5, 'Processing',10,'2024-02-10 :16:15'),
+(4, 3, 'Cancelled',0,'2024-01-31 :22:30'),
+(15, 4, 'Out for Delivery',6,'2024-02-10 :16:45'),
+(7, 8, 'Delivered',0,'2024-02-05 :11:50'),
+(8, 7, 'Out for Delivery',8,'2024-02-10 :16:40'),
+(10, 6, 'Processing',11,'2024-02-10 :16:30'),
+(11, 9, 'Out for Delivery',6,'2024-02-10 :16:50'),
+(13, 10, 'Delivered',0,'2024-02-05 :16:10');
 
 INSERT INTO Reviews (OrderID, stars, description) VALUES
 (1, 5, 'Excellent service and product quality.'),
