@@ -97,29 +97,27 @@ CREATE TABLE Reviews (
     OrderID INT,
     stars INT,
     description VARCHAR(255),
-    PRIMARY KEY (OrderID),
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 );
 
 DROP TABLE IF EXISTS `Wallet`;
 CREATE TABLE Wallet(
     CustomerID INT NOT NULL,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE,
     Balance FLOAT CHECK (Balance >= 0),
     UPI_ID VARCHAR(20) NOT NULL
 );
--- MISTAKE IN THIS TABLE NEED TO HAVE ITEM_ID REFERNCES FOREIGN KEY
+
 drop table if exists `Cart`;
 create table Cart(
     Cart_ID INT primary key,
     Customer_ID Int not null,
-    FOREIGN KEY (Customer_ID) references Customers(CustomerID),
+    FOREIGN KEY (Customer_ID) references Customers(CustomerID) ON DELETE CASCADE,
     Item_ID INT,
     FOREIGN KEY (Item_ID) references Inventory(itemID),
     Quantity INT
 );
 
--- populate the table
 drop table if exists `associates`;
 create table associates(
 	AgentID INT NOT NULL,
@@ -335,7 +333,6 @@ INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
 (18, 18, NULL, NULL),
 (19, 19, NULL, NULL),
 (20, 20, NULL, NULL);
-
 
 INSERT INTO associates (AgentID, StoreID)
 SELECT da.AgentID, os.StoreID
