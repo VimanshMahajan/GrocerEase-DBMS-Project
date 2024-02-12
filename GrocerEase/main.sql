@@ -133,7 +133,8 @@ create table ItemDelivery(
     Supplier_ID INT NOT NULL,
     StoreID INT NOT NULL,
     Quantity INT NOT NULL,
-    FOREIGN KEY (ItemID,StoreID) REFERENCES Inventory(itemID,StoreID),
+    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID),
+    FOREIGN KEY (ItemID) REFERENCES Inventory(itemID),
     FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID)
 );
 
