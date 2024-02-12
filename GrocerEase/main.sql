@@ -342,11 +342,6 @@ SELECT da.AgentID, os.StoreID
 FROM DeliveryAgent da
 JOIN Offline_Stores os ON da.StoreID = os.StoreID;
 
-INSERT INTO works (AdminID, StoreID)
-SELECT a.AdminID, os.StoreID
-FROM Admin a
-JOIN Offline_Stores os ON a.StoreID = os.StoreID;
-
 INSERT INTO Transaction (CustomerID,Amount,Transactiontime ) VALUES
 (1, 10000.00,'2023-02-03 :14:02' ),
 (2, 15000.00,'2023-02-03 :18:00' ),
