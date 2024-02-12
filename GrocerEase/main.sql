@@ -103,8 +103,7 @@ CREATE TABLE Reviews (
 
 DROP TABLE IF EXISTS `Wallet`;
 CREATE TABLE Wallet(
-	WalletID INT AUTO_INCREMENT PRIMARY KEY,
-	CustomerID INT NOT NULL,
+    CustomerID INT NOT NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     Balance FLOAT CHECK (Balance >= 0),
     UPI_ID VARCHAR(20) NOT NULL
