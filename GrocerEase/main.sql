@@ -123,12 +123,12 @@ CREATE TABLE Cart (
 
 DROP TABLE IF EXISTS `associates`;
 
-CREATE TABLE associates (
+/*CREATE TABLE associates (
   AgentID INT NOT NULL,
   StoreID INT NOT NULL,
   FOREIGN KEY (AgentID) REFERENCES DeliveryAgent(AgentID),
   FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID)
-);
+);*/
 
 DROP TABLE IF EXISTS `ItemDelivery`;
 
@@ -317,10 +317,10 @@ INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
 (19, 19, NULL, NULL),
 (20, 20, NULL, NULL);
 
-INSERT INTO associates (AgentID, StoreID)
+/*INSERT INTO associates (AgentID, StoreID)
 SELECT da.AgentID, os.StoreID
 FROM DeliveryAgent da
-JOIN Offline_Stores os ON da.StoreID = os.StoreID;
+JOIN Offline_Stores os ON da.StoreID = os.StoreID;*/
 
 INSERT INTO Transaction (CustomerID,Amount,Transactiontime ) VALUES
 (1, 100.00,'2023-02-03 14:02' ),
