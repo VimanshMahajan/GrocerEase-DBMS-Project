@@ -1,3 +1,9 @@
+/*Commands used:
+	1) CREATE
+	2) INSERT
+	3) DROP
+*/
+
 DROP DATABASE IF EXISTS `GrocerEase`;
 
 CREATE DATABASE GrocerEase;
@@ -95,6 +101,7 @@ CREATE TABLE Orders(
     FOREIGN KEY (itemID) REFERENCES Inventory(itemID)
 )AUTO_INCREMENT=1;
 
+DROP TABLE IF EXISTS `Reviews`;
 CREATE TABLE Reviews (
     OrderID INT,
     stars INT,
@@ -121,9 +128,9 @@ CREATE TABLE Cart (
   Quantity INT
 );
 
-DROP TABLE IF EXISTS `associates`;
+/*DROP TABLE IF EXISTS `associates`;
 
-/*CREATE TABLE associates (
+CREATE TABLE associates (
   AgentID INT NOT NULL,
   StoreID INT NOT NULL,
   FOREIGN KEY (AgentID) REFERENCES DeliveryAgent(AgentID),
