@@ -90,8 +90,8 @@ CREATE TABLE Orders(
     OrderStatus VARCHAR(20) NOT NULL,
     ETA TIME NOT NULL,
     OrderTime TIMESTAMP,
-    itemID INT,
-    quantity INT,
+    itemID INT NOT NULL,
+    quantity INT NOT NULL,
     FOREIGN KEY (itemID) REFERENCES Inventory(itemID)
 )AUTO_INCREMENT=1;
 
