@@ -73,6 +73,7 @@ DROP TABLE IF EXISTS Supplier;
 CREATE TABLE Supplier (
     Supplier_ID  INT auto_increment PRIMARY KEY,
     Name VARCHAR(50) NOT NULL,
+    Category VARCHAR(50) NOT NULL,
     AddressLine1 VARCHAR(100) NOT NULL,
     AddressLine2 VARCHAR(100) NOT NULL,
     City VARCHAR(100) NOT NULL,
@@ -161,17 +162,17 @@ INSERT INTO Customers (FirstName, MiddleName, LastName, LoginID, Customer_Passwo
 ('Anjali', 'Gupta', 'Verma', 'anjali_verma', 'verma456', '678 Silver Street', 'Apartment 9', 'Mumbai', 'Maharashtra', 'India', '400010', 30, 9876543210),
 ('Vivek', 'Yadav', 'Kumar', 'vivek_kumar', 'kumar@123', '901 Gold Plaza', 'Floor 8', 'Delhi', 'Delhi', 'India', '110010', 31, 8765432109);
 
-INSERT INTO Supplier (Name, AddressLine1, AddressLine2, City, State, Country, PIN_code) VALUES
-( 'Green Fields Organic', 'Warehouse 1, Industrial Area', 'Sector 5', 'Mumbai', 'Maharashtra', 'India', '400021'),
-( 'Health Essentials Distributors', 'Market Plaza, Main Road', 'District 3C', 'Delhi', 'Delhi', 'India', '110022'),
-( 'Fresh Harvest Distribution Center', 'Warehouse 2, Outer Ring Road', 'Zone 12', 'Bangalore', 'Karnataka', 'India', '560022'),
-( 'Eco-Friendly Stationary Hub', 'Market Street, Central Area', 'Block B', 'Chennai', 'Tamil Nadu', 'India', '600022'),
-( 'Nature Beauty Products Depot', 'Warehouse 3, Beauty Avenue', 'District 10', 'Kolkata', 'West Bengal', 'India', '700022'),
-( 'Hygiene Haven Logistics Center', 'Warehouse 4, Cleanliness Road', 'Sector C', 'Hyderabad', 'Telangana', 'India', '500022'),
-( 'Organic Shampoo Distribution', 'Market Square, Health Lane', 'Zone 17', 'Pune', 'Maharashtra', 'India', '411022'),
-( 'Fresh Veggie Wholesale Center', 'Warehouse 5, Vegetable Lane', 'Area 6', 'Ahmedabad', 'Gujarat', 'India', '380022'),
-( 'Healthy Living Products Depot', 'Warehouse 6, Wellness Street', 'Zone 10', 'Jaipur', 'Rajasthan', 'India', '302022'),
-( 'Fruitful Delights Wholesale Hub', 'Market Plaza, Fruit Avenue', 'District 8', 'Chandigarh', 'Punjab', 'India', '160022');
+INSERT INTO Supplier (Name, Category, AddressLine1, AddressLine2, City, State, Country, PIN_code) VALUES
+( 'Green Fields Organic','Organic Products' ,'Warehouse 1, Industrial Area', 'Sector 5', 'Mumbai', 'Maharashtra', 'India', '400021'),
+( 'Health Essentials Distributors','HealthCare', 'Market Plaza, Main Road', 'District 3C', 'Delhi', 'Delhi', 'India', '110022'),
+( 'Fresh Harvest Distribution Center','Farm Products' ,'Warehouse 2, Outer Ring Road', 'Zone 12', 'Bangalore', 'Karnataka', 'India', '560022'),
+( 'Eco-Friendly Stationary Hub','Stationary','Market Street, Central Area', 'Block B', 'Chennai', 'Tamil Nadu', 'India', '600022'),
+( 'Nature Beauty Products Depot','Beauty and skincare','Warehouse 3, Beauty Avenue', 'District 10', 'Kolkata', 'West Bengal', 'India', '700022'),
+( 'Hygiene Haven Logistics Center','Hygiene and health' ,'Warehouse 4, Cleanliness Road', 'Sector C', 'Hyderabad', 'Telangana', 'India', '500022'),
+( 'Organic Shampoo Distribution','Soaps and shampoos','Market Square, Health Lane', 'Zone 17', 'Pune', 'Maharashtra', 'India', '411022'),
+( 'Fresh Veggie Wholesale Center','Fruits and Vegetables','Warehouse 5, Vegetable Lane', 'Area 6', 'Ahmedabad', 'Gujarat', 'India', '380022'),
+( 'Healthy Living Products Depot','HealthCare' ,'Warehouse 6, Wellness Street', 'Zone 10', 'Jaipur', 'Rajasthan', 'India', '302022'),
+( 'Fruitful Delights Wholesale Hub','Fruits and Vegetables' ,'Market Plaza, Fruit Avenue', 'District 8', 'Chandigarh', 'Punjab', 'India', '160022');
 
 INSERT INTO DeliveryAgent (AgentName, PhoneNumber, StoreID) VALUES
 ('Aarav Sharma', 9876543210, 5),
