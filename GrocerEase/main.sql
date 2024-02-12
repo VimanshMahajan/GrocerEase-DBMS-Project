@@ -81,7 +81,6 @@ CREATE TABLE Supplier (
 )AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Orders`;
--- Add a Column ETA in data and the colum AgentID and time stamp.
 CREATE TABLE Orders(
     OrderID INT auto_increment PRIMARY KEY NOT NULL,
     CustomerID INT NOT NULL,
@@ -108,44 +107,46 @@ CREATE TABLE Wallet(
     UPI_ID VARCHAR(20) NOT NULL
 );
 
-drop table if exists `Cart`;
-create table Cart(
-    Cart_ID INT primary key,
-    Customer_ID Int not null,
-    FOREIGN KEY (Customer_ID) references Customers(CustomerID) ON DELETE CASCADE,
-    Item_ID INT,
-    FOREIGN KEY (Item_ID) references Inventory(itemID),
-    Quantity INT
+DROP TABLE IF EXISTS `Cart`;
+
+CREATE TABLE Cart (
+  Cart_ID INT PRIMARY KEY,
+  Customer_ID INT NOT NULL,
+  FOREIGN KEY (Customer_ID) REFERENCES Customers(CustomerID) ON DELETE CASCADE,
+  Item_ID INT,
+  FOREIGN KEY (Item_ID) REFERENCES Inventory(itemID),
+  Quantity INT
 );
 
-drop table if exists `associates`;
-create table associates(
-	AgentID INT NOT NULL,
-    StoreID INT NOT NULL,
-    FOREIGN KEY (AgentID) references DeliveryAgent(AgentID),
-    FOREIGN KEY (StoreID) references Offline_Stores(StoreID)
+DROP TABLE IF EXISTS `associates`;
+
+CREATE TABLE associates (
+  AgentID INT NOT NULL,
+  StoreID INT NOT NULL,
+  FOREIGN KEY (AgentID) REFERENCES DeliveryAgent(AgentID),
+  FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID)
 );
 
--- Populate the table
-drop table if exists `ItemDelivery`;
-create table ItemDelivery(
-	ItemID  INT not null ,
-    Supplier_ID INT NOT NULL,
-    StoreID INT NOT NULL,
-    Quantity INT NOT NULL,
-    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID),
-    FOREIGN KEY (ItemID) REFERENCES Inventory(itemID),
-    FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID)
+DROP TABLE IF EXISTS `ItemDelivery`;
+
+CREATE TABLE ItemDelivery (
+  ItemID INT NOT NULL,
+  Supplier_ID INT NOT NULL,
+  StoreID INT NOT NULL,
+  Quantity INT NOT NULL,
+  FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID),
+  FOREIGN KEY (ItemID) REFERENCES Inventory(itemID),
+  FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID)
 );
 
--- Populate the table -- Done
-drop table if exists `Transaction`;
-create table Transaction(
-    TransactionID INT AUTO_INCREMENT PRIMARY KEY,
-    CustomerID INT,
-    Amount INT,
-    Transactiontime TIMESTAMP,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+DROP TABLE IF EXISTS `Transaction`;
+
+CREATE TABLE Transaction (
+  TransactionID INT AUTO_INCREMENT PRIMARY KEY,
+  CustomerID INT,
+  Amount INT,
+  Transactiontime TIMESTAMP,
+  FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
 INSERT INTO Offline_Stores (storeID, AddressLine1, AddressLine2, city, state, country, zip_code) VALUES
@@ -361,3 +362,8 @@ INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES
 (14, 6, 1, 25),
 (15, 2, 6, 20),
 (16, 4, 8, 45);
+
+/* Member contributions
+   All the members contributed by dividing the entities table and
+   the relationship table along with their data population equally among themselves.
+ */
