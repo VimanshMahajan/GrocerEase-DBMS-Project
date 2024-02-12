@@ -273,23 +273,23 @@ INSERT INTO Wallet (CustomerID, Balance, UPI_ID) VALUES
 (20, 0.00, '8765432109@paytm');
 
 INSERT INTO Orders (CustomerID, AgentID, OrderStatus, ETA, OrderTime) VALUES
-(1, 2, 'Out for Delivery', 10,'2024-02-10 :16:50'),
-(2, 1, 'Delivered', 0,'2024-02-08 :18:10'),
+(6, 2, 'Out for Delivery', 10,'2024-02-10 :16:50'),
+(9, 1, 'Delivered', 0,'2024-02-08 :18:10'),
 (3, 5, 'Processing',10,'2024-02-10 :16:15'),
 (4, 3, 'Cancelled',0,'2024-01-31 :22:30'),
-(15, 4, 'Out for Delivery',6,'2024-02-10 :16:45'),
-(7, 8, 'Delivered',0,'2024-02-05 :11:50'),
-(8, 7, 'Out for Delivery',8,'2024-02-10 :16:40'),
+(17, 4, 'Out for Delivery',6,'2024-02-10 :16:45'),
+(14, 8, 'Delivered',0,'2024-02-05 :11:50'),
+(19, 7, 'Out for Delivery',8,'2024-02-10 :16:40'),
 (10, 6, 'Processing',11,'2024-02-10 :16:30'),
 (11, 9, 'Out for Delivery',6,'2024-02-10 :16:50'),
 (13, 10, 'Delivered',0,'2024-02-05 :16:10');
 
 INSERT INTO Reviews (OrderID, stars, description) VALUES
-(1, 5, 'Excellent service and product quality.'),
-(2, 4, 'Fast delivery but product packaging could be better.'),
+(6, 5, 'Excellent service and product quality.'),
+(9, 4, 'Fast delivery but product packaging could be better.'),
 (3, 3, 'Average experience, delivery was delayed.'),
-(5, 5, 'Very satisfied with the product and delivery.'),
-(7, 4, 'Good service overall, would recommend.');
+(13, 5, 'Very satisfied with the product and delivery.'),
+(14, 4, 'Good service overall, would recommend.');
 
 INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
 (1, 1, NULL, NULL),
