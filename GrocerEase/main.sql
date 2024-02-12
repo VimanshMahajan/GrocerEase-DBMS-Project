@@ -147,28 +147,6 @@ create table Transaction(
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
--- Populate the table,
-drop table if exists `works`;
-create table works(
-    AdminID INT,
-    StoreID INT NOT NULL,
-    FOREIGN KEY (AdminID) REFERENCES Admin(AdminID),
-    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(storeID)
-);
-
--- Populate the table, Added the quantity and ItemID.
-drop table if exists `Adds`;
-create table Adds(
-    CustomerID INT NOT NULL,
-    ItemID INT NOT NULL,
-    storeID INT NOT NULL,
-    CartID INT NOT NULL,
-    Quantity INT NOT NULL,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
-    FOREIGN KEY (CartID) REFERENCES Cart(Cart_ID),
-    FOREIGN KEY (ItemID,storeID) REFERENCES Inventory(itemID,storeID)
-);
-
 INSERT INTO Offline_Stores (storeID, AddressLine1, AddressLine2, city, state, country, zip_code) VALUES
 (1, '1, Anand Bai Keni Compd', 'Datta Mandir X Rd, Kandivli', 'Mumbai', 'Maharashtra', 'India', '400067'),
 (2, '7, Laxmi Tower Lsc', 'Sector 10, Patel Nagar', 'New Delhi', 'Delhi', 'India', '110034'),
