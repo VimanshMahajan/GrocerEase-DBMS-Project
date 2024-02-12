@@ -115,6 +115,7 @@ create table Cart(
     Customer_ID Int not null,
     FOREIGN KEY (Customer_ID) references Customers(CustomerID),
     Item_ID INT,
+    FOREIGN KEY (Item_ID) references Inventory(itemID),
     Quantity INT
 );
 
@@ -138,13 +139,13 @@ create table ItemDelivery(
     FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID)
 );
 
--- Populate the table
+-- Populate the table -- Done
 drop table if exists `Transaction`;
 create table Transaction(
     TransactionID INT AUTO_INCREMENT PRIMARY KEY,
     CustomerID INT,
     Amount INT,
-    TimeStamp TIME,
+    Transactiontime TIMESTAMP,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
@@ -346,3 +347,24 @@ SELECT a.AdminID, os.StoreID
 FROM Admin a
 JOIN Offline_Stores os ON a.StoreID = os.StoreID;
 
+INSERT INTO Transaction (CustomerID,Amount,Transactiontime ) VALUES
+(1, 10000.00,'2023-02-03 :14:02' ),
+(2, 15000.00,'2023-02-03 :18:00' ),
+(3, 0.00,'2023-02-03 :18:00' ),
+(4, 8000.00,'2023-02-03 :18:00' ),
+(5, 20000.00,'2023-02-03 :18:00' ),
+(6, 0.00,'2023-02-03 :18:00' ),
+(7, 11000.00,'2023-02-03 :18:00' ),
+(8, 7500.00,'2023-02-03 :18:00' ),
+(9, 0.00,'2023-02-03 :18:00' ),
+(10, 13000.00,'2023-02-03 :18:00' ),
+(11, 14000.00,'2023-02-03 :18:00' ),
+(12, 0.00,'2023-02-03 :18:00' ),
+(13, 18000.00,'2023-02-03 :18:00' ),
+(14, 8500.00,'2023-02-03 :18:00' ),
+(15, 0.00,'2023-02-03 :18:00' ),
+(16, 0.00,'2023-02-03 :18:00' ),
+(17, 10500.00,'2023-02-03 :18:00' ),
+(18, 0.00,'2023-02-03 :18:00' ),
+(19, 13500.00,'2023-02-03 :18:00' ),
+(20, 0.00,'2023-02-03 :18:00' );
