@@ -46,7 +46,6 @@ CREATE TABLE DeliveryAgent(
 )AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Admin`;
-
 CREATE TABLE Admin (
     AdminID INT PRIMARY KEY NOT NULL,
     admin_pwd VARCHAR(10) NOT NULL,
@@ -55,7 +54,6 @@ CREATE TABLE Admin (
 );
 
 DROP TABLE IF EXISTS `Inventory`;
-
 CREATE TABLE Inventory (
     itemID INT AUTO_INCREMENT NOT NULL,
     storeID INT NOT NULL,
@@ -83,12 +81,16 @@ CREATE TABLE Supplier (
 )AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Orders`;
-
+-- Add a Column ETA in data and the colum AgentID and time stamp.
 CREATE TABLE Orders(
     OrderID INT auto_increment PRIMARY KEY NOT NULL,
     CustomerID INT NOT NULL,
+    AgentID INT NOT NULL,
+    FOREIGN KEY (AgentID) REFERENCES DeliveryAgent(AgentID),
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
-    OrderStatus VARCHAR(20) NOT NULL
+    OrderStatus VARCHAR(20) NOT NULL,
+    ETA TIME NOT NULL,
+    TimeStamp TIME
 )AUTO_INCREMENT=1;
 
 CREATE TABLE Reviews (
@@ -101,19 +103,72 @@ CREATE TABLE Reviews (
 
 DROP TABLE IF EXISTS `Wallet`;
 CREATE TABLE Wallet(
+	WalletID INT AUTO_INCREMENT PRIMARY KEY,
 	CustomerID INT NOT NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
     Balance FLOAT CHECK (Balance >= 0),
     UPI_ID VARCHAR(20) NOT NULL
 );
-
-drop table if exists Cart;
+-- MISTAKE IN THIS TABLE NEED TO HAVE ITEM_ID REFERNCES FOREIGN KEY
+drop table if exists `Cart`;
 create table Cart(
     Cart_ID INT primary key,
     Customer_ID Int not null,
     FOREIGN KEY (Customer_ID) references Customers(CustomerID),
     Item_ID INT,
     Quantity INT
+);
+
+-- populate the table
+drop table if exists `associates`;
+create table associates(
+	AgentID INT NOT NULL,
+    StoreID INT NOT NULL,
+    FOREIGN KEY (AgentID) references DeliveryAgent(AgentID),
+    FOREIGN KEY (StoreID) references Offline_Stores(StoreID)
+);
+
+-- Populate the table
+drop table if exists `ItemDelivery`;
+create table ItemDelivery(
+	ItemID  INT not null ,
+    Supplier_ID INT NOT NULL,
+    StoreID INT NOT NULL,
+    Quantity INT NOT NULL,
+    FOREIGN KEY (ItemID,StoreID) REFERENCES Inventory(itemID,StoreID),
+    FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID)
+);
+
+-- Populate the table
+drop table if exists `Transaction`;
+create table Transaction(
+    TransactionID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INT,
+    Amount INT,
+    TimeStamp TIME,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+-- Populate the table,
+drop table if exists `works`;
+create table works(
+    AdminID INT,
+    StoreID INT NOT NULL,
+    FOREIGN KEY (AdminID) REFERENCES Admin(AdminID),
+    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(storeID)
+);
+
+-- Populate the table, Added the quantity and ItemID.
+drop table if exists `Adds`;
+create table Adds(
+    CustomerID INT NOT NULL,
+    ItemID INT NOT NULL,
+    storeID INT NOT NULL,
+    CartID INT NOT NULL,
+    Quantity INT NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (CartID) REFERENCES Cart(Cart_ID),
+    FOREIGN KEY (ItemID,storeID) REFERENCES Inventory(itemID,storeID)
 );
 
 INSERT INTO Offline_Stores (storeID, AddressLine1, AddressLine2, city, state, country, zip_code) VALUES
@@ -280,3 +335,15 @@ INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
 (18, 18, NULL, NULL),
 (19, 19, NULL, NULL),
 (20, 20, NULL, NULL);
+
+
+INSERT INTO associates (AgentID, StoreID)
+SELECT da.AgentID, os.StoreID
+FROM DeliveryAgent da
+JOIN Offline_Stores os ON da.StoreID = os.StoreID;
+
+INSERT INTO works (AdminID, StoreID)
+SELECT a.AdminID, os.StoreID
+FROM Admin a
+JOIN Offline_Stores os ON a.StoreID = os.StoreID;
+
