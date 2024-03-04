@@ -21,18 +21,23 @@ FROM Inventory
 WHERE price < 99;
 
 -- item being ordered the most
-SELECT Orders.itemID, inventory.category, SUM(quantity) AS total_quantity
+SELECT Orders.itemID, Inventory.ItemName as Item, inventory.category, SUM(quantity) AS total_quantity
 FROM orders
 JOIN inventory ON Orders.itemID = inventory.itemID
-GROUP BY Orders.itemID, inventory.category
+GROUP BY Orders.itemID, inventory.category, Inventory.ItemName
 ORDER BY total_quantity DESC
+<<<<<<< Updated upstream
 limit 1
 ;
+=======
+LIMIT 1;
+>>>>>>> Stashed changes
 
 -- update address
-update customers
-set AddressLine1 = 'changed address' and AddressLine2 = ' to new address'
-where CustomerID = 1;
+UPDATE Customers
+SET AddressLine1 = '456 Park Avenue', AddressLine2 = 'Flat 22',
+City = 'Delhi', State = 'Delhi', pin_code = '110001'
+WHERE CustomerID = 1;
 
 -- total cart cost
 SELECT c.Customer_ID, SUM(c.Quantity * i.price) AS total_bill_price

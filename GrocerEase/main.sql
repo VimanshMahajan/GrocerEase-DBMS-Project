@@ -303,26 +303,26 @@ INSERT INTO Reviews (OrderID, stars, description) VALUES
 (5, 4, 'Good service overall, would recommend.');
 
 INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
-(1, 1, NULL, NULL),
-(2, 2, NULL, NULL),
-(3, 3, NULL, NULL),
-(4, 4, NULL, NULL),
-(5, 5, NULL, NULL),
-(6, 6, NULL, NULL),
-(7, 7, NULL, NULL),
-(8, 8, NULL, NULL),
-(9, 9, NULL, NULL),
-(10, 10, NULL, NULL),
-(11, 11, NULL, NULL),
-(12, 12, NULL, NULL),
-(13, 13, NULL, NULL),
-(14, 14, NULL, NULL),
-(15, 15, NULL, NULL),
-(16, 16, NULL, NULL),
-(17, 17, NULL, NULL),
-(18, 18, NULL, NULL),
-(19, 19, NULL, NULL),
-(20, 20, NULL, NULL);
+(1, 1, 5, 10),
+(2, 2, 7, 5),
+(3, 3, 2, 8),
+(4, 4, 10, 15),
+(5, 5, 3, 12),
+(6, 6, 8, 7),
+(7, 7, 1, 20),
+(8, 8, 6, 5),
+(9, 9, 4, 18),
+(10, 10, 9, 13),
+(11, 11, 5, 10),
+(12, 12, 8, 15),
+(13, 13, 3, 8),
+(14, 14, 7, 25),
+(15, 15, 2, 10),
+(16, 16, 6, 12),
+(17, 17, 10, 15),
+(18, 18, 1, 7),
+(19, 19, 9, 18),
+(20, 20, 4, 22);
 
 /*INSERT INTO associates (AgentID, StoreID)
 SELECT da.AgentID, os.StoreID
@@ -376,6 +376,7 @@ INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES
 /* Member contributions
    All the members contributed by dividing the entities table and
    the relationship table along with their data population equally among themselves.
+<<<<<<< Updated upstream
  */
 SELECT Orders.itemID, inventory.category, SUM(quantity) AS total_quantity
 FROM orders
@@ -395,3 +396,6 @@ GROUP BY c.Customer_ID;
 
 
 
+=======
+ */
+>>>>>>> Stashed changes
