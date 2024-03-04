@@ -394,3 +394,4 @@ JOIN inventory i ON c.Item_ID = i.itemID
 GROUP BY c.Customer_ID;
 
 
+
