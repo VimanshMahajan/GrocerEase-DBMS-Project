@@ -1,3 +1,5 @@
+USE GrocerEase;
+
 -- listing all products from the store in a customer's city
 Select * from Inventory 
 where StoreID in (
@@ -8,7 +10,7 @@ where StoreID in (
         where Customers.CustomerID=1)
 	);
 
--- cart order count
+-- Counting items in a cart
 SELECT Cart_ID, SUM(Quantity) AS TotalQuantity
 FROM Cart
 GROUP BY Cart_ID;
@@ -38,7 +40,7 @@ GROUP BY Orders.itemID, inventory.category, Inventory.ItemName
 ORDER BY total_quantity DESC
 LIMIT 1;
 
--- update address
+-- updating address
 UPDATE Customers
 SET AddressLine1 = '456 Park Avenue', AddressLine2 = 'Flat 22',
 City = 'Delhi', State = 'Delhi', pin_code = '110001'
@@ -55,12 +57,12 @@ GROUP BY c.Customer_ID
 DELETE FROM Inventory
 WHERE ItemName = 'Bananas';
 
--- group by categories + most sold product
+-- group items by categories
 SELECT inventory.category, inventory.ItemName
 FROM inventory
 GROUP BY category, ItemName;
 
--- user's most frequent orders bought
+-- user's most frequent orders
 SELECT itemID , COUNT(itemID) AS Frequency
 FROM Orders
 WHERE CustomerID = 11
