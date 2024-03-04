@@ -9,6 +9,9 @@ where StoreID in (
 	);
 
 -- cart order count
+SELECT Cart_ID, SUM(Quantity) AS TotalQuantity
+FROM Cart
+GROUP BY Cart_ID;
 
 -- checking for balance in a customer's wallet
 Select Balance from Wallet where CustomerID = 1;
@@ -49,6 +52,8 @@ GROUP BY c.Customer_ID
 ;
 
 -- delete from inventory
+DELETE FROM Inventory
+WHERE ItemName = 'Bananas';
 
 -- group by categories + most sold product
 SELECT inventory.category, inventory.ItemName
