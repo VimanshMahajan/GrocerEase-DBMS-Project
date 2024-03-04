@@ -117,15 +117,15 @@ CREATE TABLE Wallet(
     UPI_ID VARCHAR(20) NOT NULL
 );
 
-DROP TABLE IF EXISTS `Cart`;
-
-CREATE TABLE Cart (
-  Cart_ID INT PRIMARY KEY,
-  Customer_ID INT NOT NULL,
-  FOREIGN KEY (Customer_ID) REFERENCES Customers(CustomerID) ON DELETE CASCADE,
-  Item_ID INT,
-  FOREIGN KEY (Item_ID) REFERENCES Inventory(itemID),
-  Quantity INT
+drop table if exists `Cart`;
+create table Cart(
+    Cart_ID INT,
+    Customer_ID Int not null,
+    FOREIGN KEY (Customer_ID) references Customers(CustomerID) ON DELETE CASCADE,
+    Item_ID INT,
+    FOREIGN KEY (Item_ID) references Inventory(itemID),
+    Quantity INT,
+    PRIMARY KEY(Cart_ID, Item_ID)
 );
 
 /*DROP TABLE IF EXISTS `associates`;
@@ -304,6 +304,7 @@ INSERT INTO Reviews (OrderID, stars, description) VALUES
 
 INSERT INTO Cart (Cart_ID, Customer_ID, Item_ID, Quantity) VALUES
 (1, 1, 5, 10),
+(1, 1, 6, 11),
 (2, 2, 7, 5),
 (3, 3, 2, 8),
 (4, 4, 10, 15),
