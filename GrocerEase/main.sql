@@ -98,7 +98,7 @@ CREATE TABLE Orders(
     OrderTime TIMESTAMP,
     itemID INT NOT NULL,
     quantity INT NOT NULL,
-    FOREIGN KEY (itemID) REFERENCES Inventory(itemID)
+    FOREIGN KEY (itemID) REFERENCES Inventory(itemID) ON DELETE CASCADE
 )AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Reviews`;
@@ -123,7 +123,7 @@ create table Cart(
     Customer_ID Int not null,
     FOREIGN KEY (Customer_ID) references Customers(CustomerID) ON DELETE CASCADE,
     Item_ID INT,
-    FOREIGN KEY (Item_ID) references Inventory(itemID),
+    FOREIGN KEY (Item_ID) references Inventory(itemID) ON DELETE CASCADE,
     Quantity INT,
     PRIMARY KEY(Cart_ID, Item_ID)
 );
@@ -145,7 +145,7 @@ CREATE TABLE ItemDelivery (
   StoreID INT NOT NULL,
   Quantity INT NOT NULL,
   FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID),
-  FOREIGN KEY (ItemID) REFERENCES Inventory(itemID),
+  FOREIGN KEY (ItemID) REFERENCES Inventory(itemID) ON DELETE CASCADE,
   FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID)
 );
 
