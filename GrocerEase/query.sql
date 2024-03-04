@@ -8,7 +8,10 @@
 
 -- average rating for overall order
 
--- select products below a certain cost
+-- Select and display items below Rs. 99
+SELECT itemID, ItemName, price
+FROM Inventory
+WHERE price < 99;
 
 -- item being ordered the most
 
