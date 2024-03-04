@@ -14,11 +14,9 @@ where StoreID in (
 Select Balance from Wallet where CustomerID = 1;
 
 -- Finding the stores closest to the customer
-SELECT CustomerID, storeID, MIN(ABS(customers.pin_code - offline_stores.zip_code)) AS min_difference
+SELECT CustomerID, storeID
 FROM customers, offline_stores
-WHERE customers.City = offline_stores.city
-GROUP BY customers.CustomerID, offline_stores.storeID
-ORDER BY customers.CustomerID, min_difference;
+WHERE customers.City = offline_stores.city;
 
 -- average rating for all orders
 SELECT AVG(reviews.stars) AS Average_rating
