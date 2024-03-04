@@ -48,7 +48,7 @@ CREATE TABLE DeliveryAgent(
     AgentName VARCHAR(100) NOT NULL,
     PhoneNumber BIGINT NOT NULL CHECK (PhoneNumber >= 1000000000 AND PhoneNumber < 10000000000),
     StoreID INT NOT NULL,
-    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID)
+    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID) ON DELETE CASCADE ON UPDATE CASCADE
 )AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Admin`;
@@ -56,7 +56,7 @@ CREATE TABLE Admin (
     AdminID INT PRIMARY KEY NOT NULL,
     admin_pwd VARCHAR(10) NOT NULL,
     StoreID INT NOT NULL,
-    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID)
+    FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS `Inventory`;
@@ -66,7 +66,7 @@ CREATE TABLE Inventory (
     ItemName VARCHAR(50) NOT NULL,
     Unit VARCHAR(50) NOT NULL,
     PRIMARY KEY (itemID, StoreID),
-    FOREIGN KEY (storeID) REFERENCES Offline_Stores(storeID),
+    FOREIGN KEY (storeID) REFERENCES Offline_Stores(storeID) ON DELETE CASCADE ON UPDATE CASCADE,
     price INT NOT NULL,
     stock INT NOT NULL,
     category VARCHAR(50) NOT NULL,
@@ -91,14 +91,14 @@ CREATE TABLE Orders(
     OrderID INT auto_increment PRIMARY KEY NOT NULL,
     CustomerID INT NOT NULL,
     AgentID INT NOT NULL,
-    FOREIGN KEY (AgentID) REFERENCES DeliveryAgent(AgentID),
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (AgentID) REFERENCES DeliveryAgent(AgentID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE ON UPDATE CASCADE,
     OrderStatus VARCHAR(20) NOT NULL,
     ETA TIME NOT NULL,
     OrderTime TIMESTAMP,
     itemID INT NOT NULL,
     quantity INT NOT NULL,
-    FOREIGN KEY (itemID) REFERENCES Inventory(itemID) ON DELETE CASCADE
+    FOREIGN KEY (itemID) REFERENCES Inventory(itemID) ON DELETE CASCADE ON UPDATE CASCADE
 )AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Reviews`;
@@ -112,7 +112,7 @@ CREATE TABLE Reviews (
 DROP TABLE IF EXISTS `Wallet`;
 CREATE TABLE Wallet(
     CustomerID INT NOT NULL,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE ON UPDATE CASCADE,
     Balance FLOAT CHECK (Balance >= 0),
     UPI_ID VARCHAR(20) NOT NULL
 );
@@ -121,21 +121,12 @@ drop table if exists `Cart`;
 create table Cart(
     Cart_ID INT,
     Customer_ID Int not null,
-    FOREIGN KEY (Customer_ID) references Customers(CustomerID) ON DELETE CASCADE,
+    FOREIGN KEY (Customer_ID) REFERENCES Customers(CustomerID) ON DELETE CASCADE ON UPDATE CASCADE,
     Item_ID INT,
-    FOREIGN KEY (Item_ID) references Inventory(itemID) ON DELETE CASCADE,
+    FOREIGN KEY (Item_ID) REFERENCES Inventory(itemID) ON DELETE CASCADE ON UPDATE CASCADE,
     Quantity INT,
     PRIMARY KEY(Cart_ID, Item_ID)
 );
-
-/*DROP TABLE IF EXISTS `associates`;
-
-CREATE TABLE associates (
-  AgentID INT NOT NULL,
-  StoreID INT NOT NULL,
-  FOREIGN KEY (AgentID) REFERENCES DeliveryAgent(AgentID),
-  FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID)
-);*/
 
 DROP TABLE IF EXISTS `ItemDelivery`;
 
@@ -144,9 +135,9 @@ CREATE TABLE ItemDelivery (
   Supplier_ID INT NOT NULL,
   StoreID INT NOT NULL,
   Quantity INT NOT NULL,
-  FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID),
-  FOREIGN KEY (ItemID) REFERENCES Inventory(itemID) ON DELETE CASCADE,
-  FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID)
+  FOREIGN KEY (StoreID) REFERENCES Offline_Stores(StoreID) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (ItemID) REFERENCES Inventory(itemID) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS `Transaction`;
@@ -156,7 +147,7 @@ CREATE TABLE Transaction (
   CustomerID INT,
   Amount INT,
   Transactiontime TIMESTAMP,
-  FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+  FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO Offline_Stores (storeID, AddressLine1, AddressLine2, city, state, country, zip_code) VALUES
