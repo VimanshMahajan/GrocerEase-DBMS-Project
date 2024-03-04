@@ -185,25 +185,25 @@ INSERT INTO Admin (AdminID, admin_pwd, StoreID) VALUES
 
 INSERT INTO Customers (FirstName, MiddleName, LastName, LoginID, Customer_Password, AddressLine1, AddressLine2, City, State, Country, pin_code, Age, PhoneNumber) VALUES
 ('John', 'Doe', 'Smith', 'john_smith', 'password123', '123 Main Street', 'Apt 5', 'Mumbai', 'Maharashtra', 'India', '400001', 25, 9876543210),
-('Alice', 'Eve', 'Johnson', 'alice_johnson', 'securepass', '456 Park Avenue', 'Flat 12', 'Delhi', 'Delhi', 'India', '110001', 30, 8765432109),
+('Alice', 'Eve', 'Johnson', 'alice_johnson', 'securepass', '456 Park Avenue', 'Flat 12', 'New Delhi', 'Delhi', 'India', '110001', 30, 8765432109),
 ('David', 'Michael', 'Brown', 'david_brown', 'brown123', '789 Crescent Road', 'Block B', 'Mumbai', 'Maharashtra', 'India', '400002', 28, 7654321098),
-('Priya', 'Raj', 'Singh', 'priya_singh', 'singh456', '101 Green Valley', 'Floor 3', 'Delhi', 'Delhi', 'India', '110002', 22, 6543210987),
+('Priya', 'Raj', 'Singh', 'priya_singh', 'singh456', '101 Green Valley', 'Floor 3', 'New Delhi', 'Delhi', 'India', '110002', 22, 6543210987),
 ('Rahul', 'Kumar', 'Verma', 'rahul_verma', 'verma789', '234 Lake View', 'Tower 7', 'Mumbai', 'Maharashtra', 'India', '400003', 35, 5432109876),
-('Neha', 'Sharma', 'Gupta', 'neha_gupta', 'gupta@123', '567 Hill Street', 'Unit 8', 'Delhi', 'Delhi', 'India', '110003', 29, 4321098765),
+('Neha', 'Sharma', 'Gupta', 'neha_gupta', 'gupta@123', '567 Hill Street', 'Unit 8', 'New Delhi', 'Delhi', 'India', '110003', 29, 4321098765),
 ('Amit', 'Singh', 'Yadav', 'amit_yadav', 'yadavpass', '789 Skyline Avenue', 'Apartment 15', 'Mumbai', 'Maharashtra', 'India', '400004', 27, 3210987654),
-('Anita', 'Mishra', 'Joshi', 'anita_joshi', 'anita123', '876 River Side', 'Flat 2B', 'Delhi', 'Delhi', 'India', '110004', 32, 2109876543),
+('Anita', 'Mishra', 'Joshi', 'anita_joshi', 'anita123', '876 River Side', 'Flat 2B', 'New Delhi', 'Delhi', 'India', '110004', 32, 2109876543),
 ('Vikram', 'Gupta', 'Sinha', 'vikram_sinha', 'sinha456', '345 Maple Lane', 'Suite 10', 'Mumbai', 'Maharashtra', 'India', '400005', 26, 1098765432),
-('Sanya', 'Reddy', 'Kumar', 'sanya_kumar', 'reddypass', '678 Forest View', 'Villa 3', 'Delhi', 'Delhi', 'India', '110005', 31, 9876543210),
+('Sanya', 'Reddy', 'Kumar', 'sanya_kumar', 'reddypass', '678 Forest View', 'Villa 3', 'New Delhi', 'Delhi', 'India', '110005', 31, 9876543210),
 ('Aditya', 'Kumar', 'Shah', 'aditya_shah', 'shah@123', '456 Sea View', 'Apartment 7', 'Mumbai', 'Maharashtra', 'India', '400006', 33, 8765432109),
-('Ritu', 'Verma', 'Goyal', 'ritu_goyal', 'goyal456', '789 Sunrise Avenue', 'Flat 3C', 'Delhi', 'Delhi', 'India', '110006', 28, 7654321098),
+('Ritu', 'Verma', 'Goyal', 'ritu_goyal', 'goyal456', '789 Sunrise Avenue', 'Flat 3C', 'New Delhi', 'Delhi', 'India', '110006', 28, 7654321098),
 ('Kunal', 'Mehta', 'Singh', 'kunal_singh', 'singh789', '101 Sky Scraper', 'Floor 15', 'Mumbai', 'Maharashtra', 'India', '400007', 25, 6543210987),
-('Neha', 'Chopra', 'Agarwal', 'neha_agarwal', 'agarwal@123', '234 Hill Top', 'Tower 4', 'Delhi', 'Delhi', 'India', '110007', 29, 5432109876),
+('Neha', 'Chopra', 'Agarwal', 'neha_agarwal', 'agarwal@123', '234 Hill Top', 'Tower 4', 'New Delhi', 'Delhi', 'India', '110007', 29, 5432109876),
 ('Rahul', 'Saxena', 'Yadav', 'rahul_yadav', 'yadavpass', '567 Ocean View', 'Suite 20', 'Mumbai', 'Maharashtra', 'India', '400008', 26, 4321098765),
-('Amit', 'Joshi', 'Gupta', 'amit_gupta', 'gupta456', '789 Palm Lane', 'Unit 11', 'Delhi', 'Delhi', 'India', '110008', 32, 3210987654),
+('Amit', 'Joshi', 'Gupta', 'amit_gupta', 'gupta456', '789 Palm Lane', 'Unit 11', 'New Delhi', 'Delhi', 'India', '110008', 32, 3210987654),
 ('Vidya', 'Nair', 'Sinha', 'vidya_sinha', 'sinha@123', '876 Green Hills', 'Flat 4B', 'Mumbai', 'Maharashtra', 'India', '400009', 27, 2109876543),
-('Sandeep', 'Rai', 'Sharma', 'sandeep_sharma', 'sharma789', '345 River Side', 'Villa 5', 'Delhi', 'Delhi', 'India', '110009', 34, 1098765432),
+('Sandeep', 'Rai', 'Sharma', 'sandeep_sharma', 'sharma789', '345 River Side', 'Villa 5', 'New Delhi', 'Delhi', 'India', '110009', 34, 1098765432),
 ('Anjali', 'Gupta', 'Verma', 'anjali_verma', 'verma456', '678 Silver Street', 'Apartment 9', 'Mumbai', 'Maharashtra', 'India', '400010', 30, 9876543210),
-('Vivek', 'Yadav', 'Kumar', 'vivek_kumar', 'kumar@123', '901 Gold Plaza', 'Floor 8', 'Delhi', 'Delhi', 'India', '110010', 31, 8765432109);
+('Vivek', 'Yadav', 'Kumar', 'vivek_kumar', 'kumar@123', '901 Gold Plaza', 'Floor 8', 'New Delhi', 'Delhi', 'India', '110010', 31, 8765432109);
 
 INSERT INTO Supplier (Name, Category, AddressLine1, AddressLine2, City, State, Country, PIN_code) VALUES
 ( 'Green Fields Organic','Organic Products' ,'Warehouse 1, Industrial Area', 'Sector 5', 'Mumbai', 'Maharashtra', 'India', '400021'),
@@ -376,26 +376,4 @@ INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES
 /* Member contributions
    All the members contributed by dividing the entities table and
    the relationship table along with their data population equally among themselves.
-<<<<<<< Updated upstream
  */
-SELECT Orders.itemID, inventory.category, SUM(quantity) AS total_quantity
-FROM orders
-JOIN inventory ON Orders.itemID = inventory.itemID
-GROUP BY Orders.itemID, inventory.category
-ORDER BY total_quantity DESC
-limit 1
-;
-update customers
-set AddressLine1 = 'changed address' and AddressLine2 = ' to new address'
-where CustomerID = 1;
-
-SELECT c.Customer_ID, SUM(c.Quantity * i.price) AS total_bill_price
-FROM cart c
-JOIN inventory i ON c.Item_ID = i.itemID
-GROUP BY c.Customer_ID;
-
-
-
-=======
- */
->>>>>>> Stashed changes
