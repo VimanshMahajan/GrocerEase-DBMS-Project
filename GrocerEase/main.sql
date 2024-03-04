@@ -351,7 +351,7 @@ INSERT INTO Transaction (CustomerID,Amount,Transactiontime ) VALUES
 (19, 135.00,'2023-02-03 18:00' ),
 (20, -400.00,'2023-02-03 18:00' );
 
-INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES 
+INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES
 (1, 10, 3, 20),
 (7, 3, 5, 30),
 (9, 6, 9, 40),
@@ -364,9 +364,9 @@ INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES
 (8, 3, 5, 40),
 (19, 6, 1, 25),
 (17, 4, 8, 30),
-(20, 3, 7, 7), 
+(20, 3, 7, 7),
 (2, 6, 9, 17),
-(6, 3, 1, 30), 
+(6, 3, 1, 30),
 (11, 6, 3, 35),
 (13, 8, 5, 11),
 (14, 6, 1, 25),
@@ -377,3 +377,20 @@ INSERT INTO ItemDelivery (ItemID, Supplier_ID, StoreID, Quantity) VALUES
    All the members contributed by dividing the entities table and
    the relationship table along with their data population equally among themselves.
  */
+SELECT Orders.itemID, inventory.category, SUM(quantity) AS total_quantity
+FROM orders
+JOIN inventory ON Orders.itemID = inventory.itemID
+GROUP BY Orders.itemID, inventory.category
+ORDER BY total_quantity DESC
+limit 1
+;
+update customers
+set AddressLine1 = 'changed address' and AddressLine2 = ' to new address'
+where CustomerID = 1;
+
+SELECT c.Customer_ID, SUM(c.Quantity * i.price) AS total_bill_price
+FROM cart c
+JOIN inventory i ON c.Item_ID = i.itemID
+GROUP BY c.Customer_ID;
+
+
