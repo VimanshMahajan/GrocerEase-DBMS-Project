@@ -106,7 +106,7 @@ CREATE TABLE Reviews (
     OrderID INT,
     stars INT,
     description VARCHAR(255),
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS `Wallet`;
