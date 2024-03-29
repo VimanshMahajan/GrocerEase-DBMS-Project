@@ -232,7 +232,7 @@ VALUES
     -- Vegetables
     (5, 'Carrot-Red', 'per 500 gms', 13, 120, 'Vegetables', 'Crunchy and nutritious carrots'),
     (7, 'Broccoli', 'per piece', 40, 90, 'Vegetables', 'Fresh and green broccoli heads'),
-    (8, 'Tomatos', 'per piece', 40, 90, 'Vegetables', 'Fresh red tomatoes from the farm'),
+    (8, 'Tomatoes', 'per piece', 40, 90, 'Vegetables', 'Fresh red tomatoes from the farm'),
 
     -- Hair care products
     (4, 'Loreal Paris Shampoo', 'per bottle: 500ml', 300, 50, 'Hair Care', 'Gentle and nourishing shampoo'),
@@ -241,7 +241,7 @@ VALUES
     (3, 'Johnsons Hair oil', 'per bottle: 150ml', 89, 60, 'Hair Care', 'hair oil for smooth hair'),
 
     -- Stationary items
-    (10, 'Classmate Notebook', '172 pges', 60, 100, 'Stationery', 'Spiral-bound smooth notebook for writing'),
+    (10, 'Classmate Notebook', '172 pages', 60, 100, 'Stationery', 'Spiral-bound smooth notebook for writing'),
     (8, 'Rorito Ballpoint Pens', 'Pack of 5', 30, 150, 'Stationery', 'Pack of ballpoint pens for everyday use'),
     (7, 'Apsara Scale', '1 scale', 10, 150, 'Stationery', '15 cm scale for everyday use'),
     (5, 'Nataraja Pencils', 'Pack of 10 pencils', 50, 150, 'Stationery', 'HB pencils for a good handwriting'),

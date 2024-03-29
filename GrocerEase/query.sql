@@ -69,3 +69,16 @@ WHERE CustomerID = 11
 GROUP BY itemID
 ORDER BY Frequency DESC
 LIMIT 1;
+
+
+-- Invalid Queries.
+-- Pincode length exceeds.
+insert into customers
+(FirstName, MiddleName, LastName, LoginID, Customer_Password, AddressLine1, AddressLine2, City, State, Country, pin_code, Age, PhoneNumber)
+values
+    ('John', 'Doe', 'Smith', 'john_smith', 'password233', '123 mall Street', 'Apt 6', 'Mumbai', 'Maharashtra', 'India', '40000', 25, 9679504321);
+
+-- Violates phonenumber length.
+update customers
+set PhoneNumber = 123
+where CustomerID = 2
