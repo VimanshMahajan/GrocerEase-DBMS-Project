@@ -285,6 +285,10 @@
                         },
                         error: function (xhr, status, error) {
                             console.error("Error executing query:", error);
+                            alert("Transaction failed");
+                            setTimeout(function () {
+                                location.reload();
+                            }, 500);
                         }
                     });
                 }

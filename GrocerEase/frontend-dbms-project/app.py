@@ -111,21 +111,25 @@ def view_cart(CustomerID):
 
 @app.route("/c/<CustomerID>/cart/pay",methods=["POST"])
 def cart_final(CustomerID):
+  temp = exec_query('0')
   cart_item = exec_query(f'Select Item_ID , Quantity from Cart where Customer_ID={CustomerID}')
   for i in cart_item:
     storeId = exec_query(f"select StoreID from Inventory where itemID = {i['Item_ID']}")
     storeId = storeId[0]['StoreID']
-    update_order(f"UPDATE Inventory SET stock = stock - {i['Quantity']} where storeID = {storeId}")
+    res = update_order(f"UPDATE Inventory SET stock = stock - {i['Quantity']} where storeID = {storeId}", 1, i['Item_ID'])
+    if res == 0:
+       temp = exec_query(f'delete from cart where Customer_ID = {CustomerID}')
+       return jsonify({'error': 'Transaction failed'}), 400
   payment_method = request.form['payment_method']
   total_cost = int(request.form['total_cost'])
   if(payment_method=='Wallet'):
      change = exec_query(f'Select Balance from Wallet where CustomerID = {CustomerID}')[0]['Balance'] - total_cost
-     update_order(f'UPDATE Wallet SET Balance = {change} where CustomerID = {CustomerID}')
+     update_order(f'UPDATE Wallet SET Balance = {change} where CustomerID = {CustomerID}', 2, i['Item_ID'])
   cart_item = exec_query(f'Select Item_ID , Quantity from Cart where Customer_ID={CustomerID}')
   for i in cart_item:
      current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
      que = f"INSERT INTO Orders (CustomerID,AgentID,itemID,quantity,OrderStatus,ETA,OrderTime) VALUES ({CustomerID},1,{i['Item_ID']},{i['Quantity']},'Delivered',5,'{current_time}')"
-     update_order(que)
+     update_order(que, 3, i['Item_ID'])
   return 'Query executed successfully'
 
 

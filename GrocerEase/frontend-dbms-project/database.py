@@ -276,8 +276,11 @@ def getReviewData():
     return result, avg_stars
 
 def exec_query(query):
-    que = query
     cur= mycon.cursor(dictionary=True)
+    if query == '0':
+        cur.execute("START TRANSACTION")
+        return ''
+    que = query
     cur.execute(que)
     result = cur.fetchall()
     return result
@@ -310,10 +313,22 @@ def get_items(CustomerID):
         item_detail[i]['Quantity'] = item[i]['Quantity']
     return item_detail
 
-def update_order(Query):
-    mycursor = mycon.cursor()
+def update_order(Query, mode, itemID):
+    mycursor = mycon.cursor(dictionary=True)
     mycursor.execute(Query)
+
+    if mode == 1:
+        query = "SELECT stock FROM inventory WHERE itemID = %s"
+        mycursor.execute(query, (itemID,))
+        result = mycursor.fetchone()
+        stock = result['stock']
+        if stock < 0:
+            print("Stock negative")
+            mycon.rollback()
+            return 0
     mycon.commit()
+    if mode == 1:
+        return 1
 
 def get_user_orders(userID, category=None, sort=None):
     query = '''select o.customerID, o.OrderID, o.itemID, i.ItemName, i.price, i.unit, o.quantity, o.quantity * i.price as cost, 
