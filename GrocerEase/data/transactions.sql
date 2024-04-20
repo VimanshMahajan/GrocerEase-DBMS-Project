@@ -53,18 +53,22 @@ COMMIT;
 
 -- Two admin viewing statistics at the same time
 START TRANSACTION;
-Select * into @AgentInfo from DeliveryAgent;
+Select PhoneNumber into @AgentInfo from DeliveryAgent where AgentID = 1;
+select @AgentInfo as Phonenumber;
 COMMIT;
 
 START TRANSACTION;
-Select * into @AgentInfo from DeliveryAgent;
+Select PhoneNumber into @AgentInfo from DeliveryAgent where AgentID = 1;
+select @AgentInfo as Phonenumber;
 COMMIT;
 
 -- Two users registering at the same time
 START TRANSACTION;
 Select Customer_Password into @pass from Customers where CustomerID = 1;
+select @pass as PasswordUser;
 COMMIT;
 
 START TRANSACTION;
 Select Customer_Password into @pass from Customers where CustomerID = 2;
+select @pass as PasswordUser;
 COMMIT;
